@@ -3,6 +3,7 @@ import 'package:get_api/category/category_offer.dart';
 import 'package:get_api/home_screen.dart';
 
 import 'category/category_homescreen.dart';
+import 'fetching_data/fetching_data_api.dart';
 import 'models/Post_api_exam/home_screen1.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:Home_Page(),
+      home:FetchData(),
     );
   }
 }

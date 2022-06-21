@@ -21,22 +21,19 @@ class _Category_offerState extends State<Category_offer> {
     getCategory();
     //getCategoryData();
   }
-// List<Getcategory>? categoryList;
-  // getData() async{
-  //   final list=await getCategory();
-  //   setState(() {
-  //     categoryList = list;
-  //   });
-  // }
 
   Future<List<Getcategory>?> getCategory() async {
     final response = await http.get(Uri.parse('https://bppshops.com/api/bs/category_view'));
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       print(response.body);
-      Category category = Category.fromJson(json);
-      categoryList=category.getcategory;
-      return category.getcategory;
+      for(Map i in json){
+        categoryList?.add(Getcategory.fromJson(i as dynamic));
+      }
+
+      // Category category = Category.fromJson(json);
+      // categoryList=category.getcategory;
+      return categoryList;
     } else {
       throw Exception(
           'Failed to load >>>>Status Code>>> :${response.statusCode}');
